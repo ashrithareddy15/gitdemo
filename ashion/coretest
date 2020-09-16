@@ -1,0 +1,77 @@
+ var x=JSON.parse(data);
+
+    var y=x[0]["productid"];
+
+    let carts=document.querySelectorAll('.add-cart');
+    let sorting=document.querySelectorAll('.sorting');
+    let wish=document.querySelectorAll('.wishlist');
+   
+    let size=document.querySelectorAll('.sorting');
+   
+    
+    let flag=0;
+    for(let i=0;i<carts.length;i++)
+   {
+    
+    flag=0;
+
+    sorting[i].addEventListener('click',()=>{
+        quantitynull(x[i]);
+       
+    })
+   carts[i].addEventListener('click',()=>{
+       console.log("flag "+ flag);
+ 
+        if(flag==0){
+            let getsize=localStorage.getItem('size');
+        console.log(getsize);
+        x[i][9]=getsize;
+        x[i]['size']=getsize;
+    
+        quantitynull(flag);
+    cartNumbers(x[i]);
+    totalCost(x[i]);
+    
+    
+}
+  
+
+    })
+   /* else{
+        alert('specify size');
+ console.log("in else");
+    }    */
+ 
+  }
+
+
+
+  function quantitynull(flagg){
+
+    let getsize=localStorage.getItem('size');
+    
+    console.log("start "+getsize);
+       if(getsize!=null ){
+           for(let j=1;j<7;j++){
+            
+               if(x[j]['size']==getsize && x[j]['quantity']==0)
+              {
+                   flag=1;
+                  console.log("qwertyuiop");
+                  quantitynull(flag);
+               }
+           }
+        }
+
+ console.log("in funccccc");
+    var elem = document.getElementById("add-cart");
+    console.log(elem);
+    if(flagg)
+     elem.innerText = "Out Of Stock";
+    else
+    elem.innerText = "Add to cart";
+
+
+
+
+  }
